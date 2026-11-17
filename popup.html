@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>开发者工具箱</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <span class="logo">&lt;/&gt;</span>
+    <h1>开发者工具箱</h1>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="json">JSON</button>
+    <button class="tab" data-tab="timestamp">时间戳</button>
+    <button class="tab" data-tab="encode">编解码</button>
+    <button class="tab" data-tab="color">取色器</button>
+  </nav>
+
+  <main>
+    <!-- JSON -->
+    <section id="panel-json" class="panel active">
+      <div class="toolbar">
+        <button id="json-format" class="btn primary">格式化</button>
+        <button id="json-minify" class="btn">压缩</button>
+        <button id="json-validate" class="btn">校验</button>
+        <button id="json-clear" class="btn ghost">清空</button>
+      </div>
+      <textarea id="json-input" placeholder='粘贴 JSON，例如 {"name":"test"}'></textarea>
+      <pre id="json-output" class="output"></pre>
+    </section>
+
+    <!-- 时间戳 -->
+    <section id="panel-timestamp" class="panel">
+      <label class="field-label">时间戳（秒 / 毫秒自动识别）</label>
+      <div class="row">
+        <input id="ts-input" type="number" placeholder="1700000000" />
+        <button id="ts-now" class="btn">当前时间</button>
+      </div>
+      <button id="ts-to-date" class="btn primary full">时间戳 → 日期</button>
+
+      <label class="field-label">日期时间</label>
+      <input id="date-input" type="text" placeholder="2024-01-01 12:00:00" />
+      <button id="date-to-ts" class="btn primary full">日期 → 时间戳</button>
+
+      <pre id="ts-output" class="output"></pre>
+    </section>
+
+    <!-- 编解码 -->
+    <section id="panel-encode" class="panel">
+      <label class="field-label">输入文本</label>
+      <textarea id="enc-input" placeholder="输入要编码 / 解码的内容"></textarea>
+      <div class="toolbar">
+        <button id="enc-base64e" class="btn primary">Base64 编码</button>
+        <button id="enc-base64d" class="btn">Base64 解码</button>
+        <button id="enc-urle" class="btn">URL 编码</button>
+        <button id="enc-urld" class="btn">URL 解码</button>
+      </div>
+      <textarea id="enc-output" class="output" readonly placeholder="结果将显示在这里"></textarea>
+    </section>
+
+    <!-- 取色器 -->
+    <section id="panel-color" class="panel">
+      <div class="row">
+        <input type="color" id="color-input" value="#3b82f6" />
+        <button id="color-pick" class="btn">从页面取色</button>
+      </div>
+      <div class="color-preview" id="color-preview"></div>
+      <label class="field-label">HEX</label>
+      <div class="row">
+        <input id="color-hex" placeholder="#3B82F6" />
+        <button id="color-apply" class="btn">应用</button>
+      </div>
+      <div class="color-values">
+        <div id="color-rgb" class="value-chip">RGB: --</div>
+        <div id="color-hsl" class="value-chip">HSL: --</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
